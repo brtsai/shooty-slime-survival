@@ -1,0 +1,30 @@
+entities (Entity)
+  units (Unit)
+    players (Player)
+    monsters (Monster)
+      ambler (Ambler)
+      walkers (Walker)
+      sprinters (Sprinter)
+      jumpers (Jumper)
+      cloakers (Cloaker)
+      shooters (Shooter)
+  projectile (Projectile)
+    bullet (Bullet)
+    rocket (Rocket)
+    stream (Stream)
+
+
+Entities are things that are drawn to the screen and interact in some way with other entities
+  Units are entities that have health/other attributes as well as being entities
+    Players move around the screen and shoot projectiles at monsters
+    Monsters move around the screen and harm the player upon contact
+      Amblers are dumb as rocks and move in a straight line, bouncing off other monsters
+      Walkers walk slowly towards the player
+      Sprinters sprint quickly towards the player, and have a set turning radius
+      Jumpers walk towards the player, and dash/jump at them when close enough
+      Cloakers are like walkers, but are invisible except for a periodic shimmer. They decloak when close enough
+      Shooters try to keep their distance from the player and shoot at them
+  Projectiles are entities that are created by units and persist until collision with another entity
+    Bullets move in a straight line and damage things they collide with, ceasing to exist after impact
+    Rockets move in a straight line and explode upon contact deal Area of Effect/Splash damage
+    Stream projectiles move in a line to a set distance, with some spread, and go through enemies, dealing damage to them
