@@ -6,7 +6,7 @@ class GameEngine {
     this.ctx = canvas.getContext("2d");
     this.mouseX = 0;
     this.mouseY = 0;
-    this.currentScene = new MainScene(ctx);
+    this.currentScene = new MainScene(this.ctx);
 
     // bind functions to this
     this.tick = this.tick.bind(this);
@@ -14,6 +14,7 @@ class GameEngine {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
 
     // setup game tick and mouse/key listeners
     window.setInterval(this.tick, 1000/fps);
@@ -21,6 +22,7 @@ class GameEngine {
     canvas.addEventListener("mouseup", this.handleMouseUp);
     canvas.addEventListener("click", this.handleClick);
     canvas.addEventListener("mousemove", this.handleMouseMove);
+    canvas.addEventListener("keypress", this.handleKeyPress);
   }
 
   tick () {
@@ -45,6 +47,11 @@ class GameEngine {
   handleMouseMove(e) {
     this.mouseX = e.layerX;
     this.mouseY = e.layerY;
+  }
+
+  handleKeyPress(e) {
+    console.log('keypress');
+    console.log(e);
   }
 
 }
