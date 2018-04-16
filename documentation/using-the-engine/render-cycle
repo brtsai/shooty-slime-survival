@@ -1,0 +1,4 @@
+onWindowLoad {
+  GameEngine grabs the canvas by id
+  GameEngine gets a drawing context from canvas
+}
