@@ -1,3 +1,7 @@
+game engine (Game)
+
+scenes (Scene)
+
 entities (Entity)
   units (Unit)
     players (Player)
@@ -13,8 +17,18 @@ entities (Entity)
     rocket (Rocket)
     stream (Stream)
 
+The Game Engine takes handles all entities and other objects that are part of the game
+  - The Game Engine will have a set game tick (30fps) and will call render and act for all entities in the game
+  - The Game Engine will also handle scene transitions and have a current scene state
+  - The Game Engine will call '.run()' on each scene every game tick
+  - The Game Engine will subscribe to mousemove and use that to keep track of the mouse/cursor
+  - The Game Engine will subscribe to keypress and use that to keep track of what keys are being pressed
+  - The Game Engine will pass mouse and key events on to each scene to handle
 
-Entities are things that are drawn to the screen and interact in some way with other entities
+Scenes handle and represent different game states
+  - Scenes will contain entities and handle game logic for specific scenarios/game states
+
+Entities are things that are drawn to the screen and interact in some way with other entities, they can be thought of as game objects/actors
   Units are entities that have health/other attributes as well as being entities
     Players move around the screen and shoot projectiles at monsters
     Monsters move around the screen and harm the player upon contact

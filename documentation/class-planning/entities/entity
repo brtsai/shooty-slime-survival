@@ -1,0 +1,11 @@
+has x and y coordinates
+has orientation (in radians)
+has hitcircle radius
+has a movement vector
+
+must implement a 'draw' method which would otherwise draw the entity centered on (0,0) facing direction 0
+must implement an 'act' method which will take care of all upkeep/actions an entity does each game tick
+uses translate and rotate along with save and restore state to render
+comes with a builtin 'render' method which will save the current canvas state, apply translations/rotations, call draw, and restore the previous canvas state
+
+calculates collisions in terms of circular collisions

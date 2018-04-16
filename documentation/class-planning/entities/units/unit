@@ -1,0 +1,4 @@
+extends entity
+
+has health
+has a movement vector
