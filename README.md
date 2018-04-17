@@ -36,12 +36,12 @@ Shooty Sphere Survival is a browser based action survival shooter game wherein y
 
 #### Day 2
 * Implement shooting
-* Implement basic enemies
+* Implement amblers, walkers, sprinter enemies
 * Implement hitbox detection for collisions between game entities
 * Implement more interesting enemies
 
 #### Day 3
-* Go crazy implementing more interesting enemies
+* Begin styling sprites
 * Move fast and break things implementing more interesting enemies
 * Maybe implement bosses and powerups
 
