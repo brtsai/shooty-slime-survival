@@ -1,26 +1,13 @@
 import Entity from '../entity';
 
-class Projectile extends Entity {
-  constructor (velocity = 0, x = 0, y = 0, orientation = 0) {
+class Ambler extends Entity {
+  constructor (x = 0, y = 0, orientation = 0, speed = 0) {
     super(x, y, orientation);
-    this.radius = 2;
-    this.velocity = velocity;
     
-    this.move = this.move.bind(this);
-  }
-
-  init () {
   }
 
   show (ctx) {
-    ctx.beginPath();
-    ctx.fillStyle = 'white';
-    ctx.arc(0,0,this.radius,0,2*Math.PI);
-    ctx.fill();
-  }
-
-  act (ctx) {
-    this.move();
+    
   }
 
   move () {
@@ -41,4 +28,4 @@ class Projectile extends Entity {
   }
 }
 
-export default Projectile;
+export default Ambler;

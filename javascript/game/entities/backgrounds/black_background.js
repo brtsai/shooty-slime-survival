@@ -10,6 +10,7 @@ class BlackBackground extends Entity {
 
   show (ctx) {
     ctx.beginPath();
+    ctx.globalAlpha = 0.4;
     ctx.fillStyle = "black";
     ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);  
     ctx.fill();

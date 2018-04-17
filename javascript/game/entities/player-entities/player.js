@@ -4,22 +4,22 @@ import Projectile from '../projectiles/projectile';
 class Player extends Entity {
   constructor () {
     super();
+    this.fps = 60;
     this.radius = 10;
     this.x = 100;
     this.y = 100;
-    this.moveSpeed = 3;
+    this.moveSpeed = this.fps/40;
     this.wIsPressed = false;
     this.aIsPressed = false;
     this.sIsPressed = false;
     this.dIsPressed = false;
     this.mouseIsPressed = false;
 
-    this.firingRate = 6;
+    this.firingRate = 1024/this.fps;
     this.firingTick = 0;
   }
 
   init () {
-    console.log('player init');
   }
 
   show (ctx) {
@@ -55,11 +55,8 @@ class Player extends Entity {
   }
 
   shoot () {
-    if (this.mouseIsPressed === true && this.firingTick === 0) {
-      console.log('pew');
-      console.log(this.scene);
-      const p = new Projectile(5, this.x, this.y, this.orientation - Math.PI/2);
-      console.log(p);
+    if (this.mouseIsPressed === true && this.firingTick <= 0) {
+      const p = new Projectile(this.fps/15, this.x, this.y, this.orientation - Math.PI/2);
       this.scene.addEntity(p);
       this.firingTick = this.firingRate;
     }
@@ -79,12 +76,10 @@ class Player extends Entity {
   }
 
   handleMouseDown (e) {
-    console.log('player mouse down');
     this.mouseIsPressed = true;
   }
 
   handleMouseUp (e) {
-    console.log('player mouse up');
     this.mouseIsPressed = false;
   }
 
