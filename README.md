@@ -4,11 +4,12 @@
 
 Shooty Sphere Survival is a browser based action survival shooter game wherein you play as a shooty sphere trying to survive a harsh world filled with ouchy enemies!
 
-## Technologies
+## Technologies/External Resources
 
 * HTML5 Canvas for drawing, rendering the game
 * HTML, CSS for everything else on the page
 * Gimp for sprites/character models
+* Fontawesome for footer glyphicons
 
 ## Project Goals
 
