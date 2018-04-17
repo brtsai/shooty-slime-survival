@@ -26,13 +26,13 @@ class Entity {
     this.act();
   }
 
-  init () {
+  init (ctx) {
   }
 
   render (ctx) {
     ctx.save();
-    
-    ctx.transform(this.hScale, this.hSkew, this.vScale, this.vSkew, this.x, this.y);
+     
+    ctx.transform(this.hScale, this.hSkew, this.vSkew, this.vScale, this.x, this.y);
     this.show(ctx);
 
     ctx.restore();

@@ -8,10 +8,8 @@ class MainScene extends GameScene {
   }
  
   init () {
-    const background = new BlackBackground();
-    console.log(this);
+    const background = new BlackBackground(this.ctx);
     this.addEntity(background);
-    console.log(this.entities);
   }
 
   handleMouseDown (e) {

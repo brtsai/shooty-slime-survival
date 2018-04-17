@@ -3,7 +3,7 @@ import MainScene from './scenes/main_scene';
 class GameEngine {
   constructor (canvas = document.getElementById("game"), fps = 30, InitialScene = MainScene) {
     // set member variables
-    this.ctx = canvas.getContext("2d");
+    this.ctx = canvas.getContext('2d');
     this.mouseX = 0;
     this.mouseY = 0;
     this.currentScene = new InitialScene(this.ctx);
