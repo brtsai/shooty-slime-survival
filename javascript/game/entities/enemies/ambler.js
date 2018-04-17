@@ -7,13 +7,19 @@ class Ambler extends Entity {
     super(scene, x, y, orientation);
     this.speed = speed;
     this.radius = radius;
+    this.color = '#28d347';
+    this.outline = 'red';
+
+    this.type = 'enemy';
   }
 
   show (ctx) {
     ctx.beginPath();
-    ctx.fillStyle = '#28d347';
+    ctx.fillStyle = this.color;
     ctx.arc(0,0,this.radius,0,2*Math.PI);
     ctx.fill();
+    ctx.strokeStyle = this.outline;
+    ctx.stroke();
   }
   
   act () {
@@ -43,6 +49,10 @@ class Ambler extends Entity {
 
   static get speed () {
     return speed;
+  }
+
+  receiveCollisionFrom (otherEntity) {
+    console.log('ambler collision');
   }
 }
 

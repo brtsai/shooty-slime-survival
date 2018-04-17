@@ -12,6 +12,7 @@ class Player extends Entity {
     this.dIsPressed = false;
     this.mouseIsPressed = false;
 
+    this.type = 'player';
     this.firingRate = 1024/this.fps;
     this.firingTick = 0;
   }
@@ -24,7 +25,9 @@ class Player extends Entity {
     ctx.fillStyle = '#2246f9';
     ctx.arc(0,0,this.radius,0,2*Math.PI);
     ctx.fill();
-    
+    ctx.strokeStyle = "white";
+    ctx.stroke();
+
     ctx.beginPath();
     ctx.fillStyle = '#bf9c20';
     ctx.arc(0,0,this.radius/2,0,2*Math.PI);
@@ -58,7 +61,9 @@ class Player extends Entity {
 
   shoot () {
     if (this.mouseIsPressed === true && this.firingTick <= 0) {
-      const p = new Projectile(this.fps/15, this.scene, this.x, this.y, this.orientation - Math.PI/2);
+      const xDist = Math.sin(this.orientation) * (this.radius + Projectile.radius + 1)
+      const yDist = Math.cos(this.orientation) * (this.radius + Projectile.radius + 1)
+      const p = new Projectile(this.fps/15, this.scene, this.x + xDist, this.y - yDist, this.orientation - Math.PI/2);
       this.scene.addEntity(p);
       this.firingTick = this.firingRate;
     }
@@ -139,6 +144,10 @@ class Player extends Entity {
         
         break;
     }
+  }
+
+  receiveCollisionFrom (otherEntity) {
+    console.log('player collision');
   }
 }
 

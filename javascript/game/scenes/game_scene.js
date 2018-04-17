@@ -4,6 +4,7 @@ class GameScene {
     this.fps = fps;
     this.bindFunctions();
     this.entities = {};
+    this.doodads = {};
     this.nextId = 0;
 
     this.init()

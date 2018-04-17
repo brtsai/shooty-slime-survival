@@ -70,7 +70,7 @@ class GameEngine {
         const left = collidables[leftIndex];
         const right = collidables[rightIndex];
         if (left.collidesWith(right)) {
-          console.log('collision');
+          console.log(`collision between ${left.type} and ${right.type}`);
           left.receiveCollisionFrom(right);
           right.receiveCollisionFrom(left);
         }

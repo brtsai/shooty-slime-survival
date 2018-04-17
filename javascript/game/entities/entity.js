@@ -11,7 +11,6 @@ class Entity {
     this.vSkew = vSkew;
     this.shouldRender = true;
     this.collisionType = 'circular';
-
     this.init();
   }
 

@@ -1,11 +1,14 @@
 import Entity from '../entity';
 
+export const radius = 2;
+
 class Projectile extends Entity {
-  constructor (velocity = 0, scene, x = 0, y = 0, orientation = 0) {
+  constructor (velocity = 0, scene, x = 0, y = 0, orientation = 0, spawner) {
     super(scene, x, y, orientation);
-    this.radius = 2;
+    this.radius = radius;
     this.velocity = velocity;
     this.move = this.move.bind(this);
+    this.type = 'projectile'
   }
 
   init () {
@@ -37,6 +40,10 @@ class Projectile extends Entity {
     if (this.x > this.scene.ctx.canvas.width + 3 * this.radius) return true;
     if (this.y > this.scene.ctx.canvas.height + 3 * this.radius) return true;
     return false;
+  }
+
+  static get radius () {
+    return radius;
   }
 
 }
