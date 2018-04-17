@@ -14,6 +14,7 @@ class GameScene {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   init () {
@@ -27,7 +28,6 @@ class GameScene {
   }
 
   run () {
-
   }
 
   handleMouseDown (e) {
@@ -37,6 +37,9 @@ class GameScene {
   }
   
   handleMouseClick (e) {
+  }
+
+  handleKeyPress (e) {
   }
 }
 

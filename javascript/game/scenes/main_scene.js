@@ -4,9 +4,14 @@ class MainScene extends GameScene {
   constructor (ctx) {
     super(ctx);
   }
-  
+ 
+  init () {
+  }
+
   handleMouseDown (e) {
-    console.log('main scene handle mouse down');
+  }
+
+  handleKeyPress (e) {
   }
 }
 

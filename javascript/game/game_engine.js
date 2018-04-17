@@ -50,8 +50,8 @@ class GameEngine {
   }
 
   handleKeyPress(e) {
-    console.log('keypress');
-    console.log(e);
+    if (this.currentScene.handleKeyPress === undefined) return;
+    this.currentScene.handleKeyPress(e);
   }
 
 }
