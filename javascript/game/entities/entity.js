@@ -14,11 +14,16 @@ class Entity {
   }
 
   bindFunctions () {
+    this.setScene = this.setScene.bind(this);
     this.onTick = this.onTick.bind(this);
     this.init = this.init.bind(this);
     this.render = this.render.bind(this);
     this.show = this.show.bind(this);
     this.act = this.act.bind(this);
+  }
+
+  setScene (scene) {
+    this.scene = scene;
   }
 
   onTick (ctx) {

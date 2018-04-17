@@ -11,8 +11,13 @@ class Player extends Entity {
     this.aIsPressed = false;
     this.sIsPressed = false;
     this.dIsPressed = false;
+    this.mouseIsPressed = false;
+
+    this.firingRate = 6;
+    this.firingTick = 0;
 
     this.move = this.move.bind(this);
+    this.shoot = this.shoot.bind(this);
   }
 
   init () {
@@ -28,6 +33,7 @@ class Player extends Entity {
 
   act () {
     this.move();
+    this.shoot();
   }
 
   move () {
@@ -45,9 +51,24 @@ class Player extends Entity {
     }
   }
 
+  shoot () {
+    if (this.mouseIsPressed === true && this.firingTick === 0) {
+      console.log('pew');
+      console.log(this.scene);
+      this.firingTick = this.firingRate;
+    }
+
+    if (this.firingTick > 0) this.firingTick--;
+  }
+
   handleMouseDown (e) {
     console.log('player mouse down');
-    console.log(e);
+    this.mouseIsPressed = true;
+  }
+
+  handleMouseUp (e) {
+    console.log('player mouse up');
+    this.mouseIsPressed = false;
   }
 
   handleKeyDown (e) {
