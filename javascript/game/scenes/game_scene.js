@@ -41,7 +41,8 @@ class GameScene {
   }
 
   addEntity (entity) {
-    this.entities.push(entity);
+    this.entities[this.getNextId()] = entity;
+    entity.init();
   }
 
   getNextId () {

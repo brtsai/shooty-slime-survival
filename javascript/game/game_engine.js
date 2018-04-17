@@ -26,7 +26,7 @@ class GameEngine {
   }
 
   tick () {
-    this.currentScene.run();
+    this.currentScene.onTick();
   }
 
   handleMouseDown (e) {
