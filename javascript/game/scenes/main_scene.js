@@ -1,4 +1,5 @@
 import GameScene from './game_scene';
+import entity from '../entities/entity';
 
 class MainScene extends GameScene {
   constructor (ctx) {
@@ -6,6 +7,7 @@ class MainScene extends GameScene {
   }
  
   init () {
+  
   }
 
   handleMouseDown (e) {
