@@ -31,7 +31,7 @@ class Entity {
 
   render (ctx) {
     ctx.save();
-     
+    
     ctx.transform(this.hScale, this.hSkew, this.vSkew, this.vScale, this.x, this.y);
     this.show(ctx);
 

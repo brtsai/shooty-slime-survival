@@ -9,14 +9,10 @@ class BlackBackground extends Entity {
   }
 
   show (ctx) {
-    console.log(ctx);
-
-ctx.beginPath();
-ctx.lineWidth = "6";
-ctx.strokeStyle = "red";
-ctx.rect(5, 5, 290, 140);  
-ctx.stroke();
-
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);  
+    ctx.fill();
   }
 }
 

@@ -16,7 +16,8 @@ class GameScene {
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
     this.addEntity = this.addEntity.bind(this);
     this.getNextId = this.getNextId.bind(this);
   }
@@ -72,10 +73,17 @@ class GameScene {
     });
   }
 
-  handleKeyPress (e) {
+  handleKeyDown (e) {
     this.eachEntity(entity => {
-      if (entity.handleKeyPress === undefined) return;
-      entity.handleKeyPress(e);
+      if (entity.handleKeyDown === undefined) return;
+      entity.handleKeyDown(e);
+    });
+  }
+  
+  handleKeyUp (e) {
+    this.eachEntity(entity => {
+      if (entity.handleKeyUp === undefined) return;
+      entity.handleKeyUp(e);
     });
   }
 }
