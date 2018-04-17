@@ -4,8 +4,6 @@ class GameEngine {
   constructor (canvas = document.getElementById("game"), fps = 30, InitialScene = MainScene) {
     // set member variables
     this.ctx = canvas.getContext('2d');
-    this.mouseX = 0;
-    this.mouseY = 0;
     this.currentScene = new InitialScene(this.ctx);
 
     // bind functions to this
@@ -47,8 +45,9 @@ class GameEngine {
   }
 
   handleMouseMove(e) {
-    this.mouseX = e.layerX;
-    this.mouseY = e.layerY;
+    if (this.currentScene.handleMouseMove === undefined) return;
+    this.currentScene.handleMouseMove(e);
+    
   }
 
   handleKeyDown(e) {

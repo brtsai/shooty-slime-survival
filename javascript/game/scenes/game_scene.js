@@ -13,6 +13,7 @@ class GameScene {
     this.eachEntity = this.eachEntity.bind(this);
     this.onTick = this.onTick.bind(this);
     this.run = this.run.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -51,6 +52,13 @@ class GameScene {
   }
 
   run () {
+  }
+  
+  handleMouseMove (e) {
+    this.eachEntity(entity => {
+      if (entity.handleMouseMove === undefined) return;
+      entity.handleMouseMove(e);
+    });
   }
 
   handleMouseDown (e) {

@@ -38,6 +38,7 @@ class Entity {
     ctx.save();
     
     ctx.transform(this.hScale, this.hSkew, this.vSkew, this.vScale, this.x, this.y);
+    ctx.rotate(this.orientation);
     this.show(ctx);
 
     ctx.restore();

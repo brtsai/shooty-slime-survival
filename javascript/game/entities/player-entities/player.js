@@ -15,9 +15,6 @@ class Player extends Entity {
 
     this.firingRate = 6;
     this.firingTick = 0;
-
-    this.move = this.move.bind(this);
-    this.shoot = this.shoot.bind(this);
   }
 
   init () {
@@ -28,6 +25,11 @@ class Player extends Entity {
     ctx.beginPath();
     ctx.fillStyle = 'green';
     ctx.arc(0,0,this.radius,0,2*Math.PI);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle = 'white';
+    ctx.rect(-2, -10, 4, 10);
     ctx.fill();
   }
 
@@ -59,6 +61,17 @@ class Player extends Entity {
     }
 
     if (this.firingTick > 0) this.firingTick--;
+  }
+
+  handleMouseMove (e) {
+    this.face(e.layerX, e.layerY)
+  }
+
+  face (x, y) {
+    const xDiff = x - this.x;
+    const yDiff = y - this.y;
+    this.orientation = Math.atan(yDiff/xDiff) + Math.PI/2;
+    if (xDiff < 0) this.orientation += Math.PI;
   }
 
   handleMouseDown (e) {
