@@ -2,12 +2,9 @@ import Entity from '../entity';
 import Projectile from '../projectiles/projectile';
 
 class Player extends Entity {
-  constructor () {
-    super();
-    this.fps = 60;
+  constructor (scene, x = 100, y = 100, orientation = 0) {
+    super(scene, x, y, orientation);
     this.radius = 10;
-    this.x = 100;
-    this.y = 100;
     this.moveSpeed = this.fps/40;
     this.wIsPressed = false;
     this.aIsPressed = false;
@@ -56,7 +53,7 @@ class Player extends Entity {
 
   shoot () {
     if (this.mouseIsPressed === true && this.firingTick <= 0) {
-      const p = new Projectile(this.fps/15, this.x, this.y, this.orientation - Math.PI/2);
+      const p = new Projectile(this.fps/15, this.scene, this.x, this.y, this.orientation - Math.PI/2);
       this.scene.addEntity(p);
       this.firingTick = this.firingRate;
     }

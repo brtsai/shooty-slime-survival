@@ -1,8 +1,8 @@
 import Entity from '../entity';
 
 class Projectile extends Entity {
-  constructor (velocity = 0, x = 0, y = 0, orientation = 0) {
-    super(x, y, orientation);
+  constructor (velocity = 0, scene, x = 0, y = 0, orientation = 0) {
+    super(scene, x, y, orientation);
     this.radius = 2;
     this.velocity = velocity;
     

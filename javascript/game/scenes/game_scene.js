@@ -1,6 +1,7 @@
 class GameScene {
-  constructor (ctx) {
+  constructor (ctx, fps) {
     this.ctx = ctx;
+    this.fps = fps;
     this.bindFunctions();
     this.entities = {};
     this.nextId = 0;

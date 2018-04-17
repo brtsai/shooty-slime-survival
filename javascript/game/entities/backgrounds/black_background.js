@@ -1,8 +1,8 @@
 import Entity from '../entity';
 
 class BlackBackground extends Entity {
-  constructor() {
-    super();
+  constructor(scene) {
+    super(scene);
   }
 
   init (ctx) {

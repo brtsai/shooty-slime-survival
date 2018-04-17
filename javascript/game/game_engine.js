@@ -4,8 +4,9 @@ class GameEngine {
   constructor (canvas = document.getElementById("game"), fps = 30, InitialScene = MainScene) {
     // set member variables
     this.ctx = canvas.getContext('2d');
-    this.currentScene = new InitialScene(this.ctx);
-
+    this.fps = fps;
+    this.currentScene = new InitialScene(this.ctx, this.fps);
+  
     // bind functions to this
     this.tick = this.tick.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);

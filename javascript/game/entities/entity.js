@@ -1,5 +1,7 @@
 class Entity {
-  constructor (x = 0, y = 0, orientation = 0, hScale = 1, vScale = 1, hSkew = 0, vSkew = 0) {
+  constructor (scene, x = 0, y = 0, orientation = 0, hScale = 1, vScale = 1, hSkew = 0, vSkew = 0) {
+    this.scene = scene;
+    this.fps = this.scene.fps;
     this.x = x;
     this.y = y;
     this.orientation = orientation;
@@ -24,6 +26,7 @@ class Entity {
 
   setScene (scene) {
     this.scene = scene;
+    this.fps = scene.fps;
   }
 
   onTick (ctx) {
