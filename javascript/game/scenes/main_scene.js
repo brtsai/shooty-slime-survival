@@ -8,7 +8,10 @@ class MainScene extends GameScene {
   constructor (ctx, fps) {
     super(ctx, fps);
     this.count = 0;
-    this.spawnRate = 2;
+    this.spawnRate = 1;
+
+    this.run = this.run.bind(this);
+    this.randomInt = this.randomInt.bind(this);
   }
  
   init () {
@@ -27,9 +30,43 @@ class MainScene extends GameScene {
     this.count++;
   }
 
+  randomInt (max) {
+    return Math.floor(Math.random() * max);
+  }
+
   spawnRandomAmbler () {
     console.log('spawning ambler');
-    const spawningSide = Math.floor(Math.random() * 4);
+    const spawningSide = this.randomInt(4);
+    let x = this.randomInt(this.ctx.canvas.width);
+    let y = this.randomInt(this.ctx.canvas.height);
+    let orientation = Math.random() * Math.PI/2 - Math.PI/4;
+    console.log(Ambler.radius);
+    switch(spawningSide) {
+      case 0:
+        y = 0 - 2 * Ambler.radius;
+        orientation += Math.PI/2;
+        break;
+
+      case 1:
+        x = this.ctx.canvas.width + 2 * Ambler.radius
+        orientation += Math.PI;
+        break;
+
+      case 2:
+        y = this.ctx.canvas.height + 2 * Ambler.radius
+        orientation -= Math.PI/2;
+        break;
+
+      case 3:
+        x = 0 - 2 * Ambler.radius;
+        break;
+
+      default:
+        console.log('error');
+        break;
+    }
+    const a = new Ambler(Ambler.speed, this, x, y, orientation);
+    this.addEntity(a);
   }
 }
 
