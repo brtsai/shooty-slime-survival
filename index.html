@@ -4,18 +4,52 @@
   <title>Title of the document</title>
   <script src="./dist/bundle.js"></script>
   <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+
     canvas {
     }
     canvas:focus {
       outline: none;
     }
+
+    .footer-links {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 40%;
+      font-size: 24px;
+    }
+
   </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <h1> Shooty Sphere Survival </h1>
+  <h1>Shooty Sphere Survival</h1>
 
   <canvas id="game" width="500" height="500" tabindex="1"></canvas>
+  
+  <h2>Instructions</h2>
+  
+  <p>
+    Move with wasd, aim and shoot with the mouse
+  </p>
+
+  <h2>About the Developer</h2>
+
+  <ul class="footer-links">
+    <li><a href="https://github.com/brtsai"><i class="fa fa-github"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/bryan-tsai-b2606610a"><i class="fa fa-linkedin"></i></a></li>
+    <li><a href="https://www.ucsc.edu/"><i class="fa fa-graduation-cap"></i></a></li>
+  </ul>
 </body>
 
 </html>
