@@ -28,7 +28,7 @@ class Entity {
 
   onTick (ctx) {
     this.render(ctx);
-    this.act();
+    this.act(ctx);
   }
 
   init (ctx) {
@@ -48,7 +48,7 @@ class Entity {
     
   }
 
-  act () {
+  act (ctx) {
 
   }
 

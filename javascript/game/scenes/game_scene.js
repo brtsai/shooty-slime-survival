@@ -31,7 +31,7 @@ class GameScene {
     for (let i = 0; i < entityKeys.length; i++) {
       const key = entityKeys[i];
       fn(this.entities[key]);
-      if (this.entities.shouldRender === false) delete this.entities[key];
+      if (this.entities[key].shouldRender === false) delete this.entities[key];
     }
   }
 

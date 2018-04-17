@@ -1,8 +1,9 @@
 import Entity from '../entity';
+import Projectile from '../projectiles/projectile';
 
 class Player extends Entity {
-  constructor (ctx) {
-    super(ctx);
+  constructor () {
+    super();
     this.radius = 10;
     this.x = 100;
     this.y = 100;
@@ -33,7 +34,7 @@ class Player extends Entity {
     ctx.fill();
   }
 
-  act () {
+  act (ctx) {
     this.move();
     this.shoot();
   }
@@ -57,6 +58,9 @@ class Player extends Entity {
     if (this.mouseIsPressed === true && this.firingTick === 0) {
       console.log('pew');
       console.log(this.scene);
+      const p = new Projectile(5, this.x, this.y, this.orientation - Math.PI/2);
+      console.log(p);
+      this.scene.addEntity(p);
       this.firingTick = this.firingRate;
     }
 
