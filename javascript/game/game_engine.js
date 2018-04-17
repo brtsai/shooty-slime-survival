@@ -28,6 +28,7 @@ class GameEngine {
 
   tick () {
     this.currentScene.onTick();
+    this.checkCollisions();
   }
 
   handleMouseDown (e) {
@@ -59,6 +60,10 @@ class GameEngine {
   handleKeyUp(e) {
     if (this.currentScene.handleKeyUp === undefined) return;
     this.currentScene.handleKeyUp(e);
+  }
+
+  checkCollisions () {
+    
   }
 }
 

@@ -10,6 +10,7 @@ class Entity {
     this.hSkew = hSkew;
     this.vSkew = vSkew;
     this.shouldRender = true;
+    this.collisionType = 'circular';
 
     this.bindFunctions();
     this.init();
@@ -22,6 +23,7 @@ class Entity {
     this.render = this.render.bind(this);
     this.show = this.show.bind(this);
     this.act = this.act.bind(this);
+    this.collideWith = this.collideWith.bind(this);
   }
 
   setScene (scene) {
@@ -52,6 +54,10 @@ class Entity {
   }
 
   act (ctx) {
+
+  }
+
+  collideWith (otherEntity) {
 
   }
 

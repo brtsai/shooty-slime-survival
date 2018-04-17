@@ -10,8 +10,6 @@ class MainScene extends GameScene {
     this.count = 0;
     this.spawnRate = 1;
 
-    this.run = this.run.bind(this);
-    this.randomInt = this.randomInt.bind(this);
   }
  
   init () {
@@ -35,12 +33,11 @@ class MainScene extends GameScene {
   }
 
   spawnRandomAmbler () {
-    console.log('spawning ambler');
     const spawningSide = this.randomInt(4);
     let x = this.randomInt(this.ctx.canvas.width);
     let y = this.randomInt(this.ctx.canvas.height);
     let orientation = Math.random() * Math.PI/2 - Math.PI/4;
-    console.log(Ambler.radius);
+    
     switch(spawningSide) {
       case 0:
         y = 0 - 2 * Ambler.radius;
