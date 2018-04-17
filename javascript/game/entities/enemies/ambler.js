@@ -1,13 +1,17 @@
 import Entity from '../entity';
 
 class Ambler extends Entity {
-  constructor (x = 0, y = 0, orientation = 0, speed = 0) {
-    super(x, y, orientation);
-    
+  constructor (velocity = 0, scene, x = 0, y = 0, orientation = 0, speed = 0) {
+    super(scene, x, y, orientation);
+    this.velocity = velocity;
+    this.radius = 10;
   }
 
   show (ctx) {
-    
+    ctx.beginPath();
+    ctx.fillStyle = '#28d347';
+    ctx.arc(0,0,this.radius,0,2*Math.PI);
+    ctx.fill();
   }
 
   move () {

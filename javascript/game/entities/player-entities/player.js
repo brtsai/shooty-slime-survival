@@ -21,10 +21,15 @@ class Player extends Entity {
 
   show (ctx) {
     ctx.beginPath();
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = '#2246f9';
     ctx.arc(0,0,this.radius,0,2*Math.PI);
     ctx.fill();
     
+    ctx.beginPath();
+    ctx.fillStyle = '#bf9c20';
+    ctx.arc(0,0,this.radius/2,0,2*Math.PI);
+    ctx.fill();
+
     ctx.beginPath();
     ctx.fillStyle = 'white';
     ctx.rect(-2, -10, 4, 10);
