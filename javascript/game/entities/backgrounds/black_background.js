@@ -3,6 +3,7 @@ import Entity from '../entity';
 class BlackBackground extends Entity {
   constructor(scene) {
     super(scene);
+    this.collisionType = 'background';
   }
 
   init (ctx) {

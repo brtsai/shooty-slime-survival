@@ -2,7 +2,7 @@ import Entity from '../entity';
 import Projectile from '../projectiles/projectile';
 
 class Player extends Entity {
-  constructor (scene, x = 100, y = 100, orientation = 0) {
+  constructor (scene, x = 250, y = 250, orientation = 0) {
     super(scene, x, y, orientation);
     this.radius = 10;
     this.moveSpeed = this.fps/40;

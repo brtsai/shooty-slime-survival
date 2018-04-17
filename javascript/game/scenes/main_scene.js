@@ -14,7 +14,7 @@ class MainScene extends GameScene {
  
   init () {
     const background = new BlackBackground(this);
-    const player = new Player(this);
+    const player = new Player(this, this.ctx.canvas.width/2, this.ctx.canvas.height/2);
     this.addEntity(background);
     this.addEntity(player);
   }

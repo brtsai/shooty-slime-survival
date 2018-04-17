@@ -63,7 +63,19 @@ class GameEngine {
   }
 
   checkCollisions () {
-    
+    const collidables = [];
+    this.currentScene.eachEntity (entity => collidables.push(entity));
+    for (let leftIndex = 0; leftIndex < collidables.length; leftIndex++) {
+      for (let rightIndex = leftIndex + 1; rightIndex < collidables.length; rightIndex ++) {
+        const left = collidables[leftIndex];
+        const right = collidables[rightIndex];
+        if (left.collidesWith(right)) {
+          console.log('collision');
+          left.receiveCollisionFrom(right);
+          right.receiveCollisionFrom(left);
+        }
+      }
+    }
   }
 }
 

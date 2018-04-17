@@ -25,7 +25,6 @@ class Ambler extends Entity {
     this.y += this.speed * Math.sin(this.orientation);
 
     if (this.isOffScreen()) {
-      console.log('ambler off screen');
       this.shouldRender = false;
     }
   }

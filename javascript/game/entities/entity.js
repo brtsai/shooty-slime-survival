@@ -12,18 +12,7 @@ class Entity {
     this.shouldRender = true;
     this.collisionType = 'circular';
 
-    this.bindFunctions();
     this.init();
-  }
-
-  bindFunctions () {
-    this.setScene = this.setScene.bind(this);
-    this.onTick = this.onTick.bind(this);
-    this.init = this.init.bind(this);
-    this.render = this.render.bind(this);
-    this.show = this.show.bind(this);
-    this.act = this.act.bind(this);
-    this.collideWith = this.collideWith.bind(this);
   }
 
   setScene (scene) {
@@ -57,10 +46,37 @@ class Entity {
 
   }
 
-  collideWith (otherEntity) {
+  collidesWith (otherEntity ) {
+    switch (this.collisionType) {
+      case 'circular':
+        switch (otherEntity.collisionType) {
+          case 'circular':
+            return this.checkCircularToCircularCollision (this, otherEntity);
 
+          default:
+            return false;
+        }
+        break;
+
+      default:
+        return false;
+        break;
+    }
   }
 
+  checkCircularToCircularCollision (entityOne, entityTwo) {
+    const xVector = entityTwo.x - this.x;
+    const yVector = entityTwo.y - this.y;
+
+    const distance = Math.sqrt(xVector * xVector + yVector * yVector);
+    const radii = entityOne.radius + entityTwo.radius;
+
+    return distance <= radii;
+  }
+
+  receiveCollisionFrom (otherEntity) {
+
+  }
 }
 
 export default Entity;

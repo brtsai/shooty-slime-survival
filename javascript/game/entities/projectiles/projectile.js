@@ -5,7 +5,6 @@ class Projectile extends Entity {
     super(scene, x, y, orientation);
     this.radius = 2;
     this.velocity = velocity;
-    
     this.move = this.move.bind(this);
   }
 
@@ -39,6 +38,7 @@ class Projectile extends Entity {
     if (this.y > this.scene.ctx.canvas.height + 3 * this.radius) return true;
     return false;
   }
+
 }
 
 export default Projectile;
