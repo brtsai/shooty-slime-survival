@@ -50,6 +50,7 @@ class Entity {
       case 'circular':
         switch (otherEntity.collisionType) {
           case 'circular':
+
             return this.checkCircularToCircularCollision (this, otherEntity);
 
           default:
@@ -61,6 +62,16 @@ class Entity {
         return false;
         break;
     }
+  }
+
+  bounce (otherEntity) {
+    const xDiff = otherEntity.x - this.x;
+    const yDiff = otherEntity.y - this.y;
+    const orientationToEntity = Math.atan(yDiff/xDiff) + (xDiff < 0 ? Math.PI : 0);
+    const orientationAway = orientationToEntity + 2 * Math.PI;
+
+    this.x += sin(orientationAway);
+    this.y += sin(orientationAway);
   }
 
   checkCircularToCircularCollision (entityOne, entityTwo) {

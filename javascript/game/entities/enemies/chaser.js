@@ -34,6 +34,27 @@ class Chaser extends Ambler {
     this.yMomentum += Math.sin(orientationToPlayer) * this.velocity/this.scene.fps;
 
     if (this.velocity < this.fps/10) this.velocity += .01;
+
+    if (this.isOffScreen()) this.shouldRender = false;
+  }
+
+  receiveCollisionFrom (otherEntity) {
+    switch (otherEntity.type) {
+      case 'projectile':
+        this.shouldRender = false;
+        break;
+
+      case 'enemy':
+        this.x -= this.xMomentum;
+        this.y -= this.yMomentum;
+        this.xMomentum /= -2;
+        this.yMomentum /= -2;
+
+        break;
+
+      default:
+
+    }
   }
 
 }

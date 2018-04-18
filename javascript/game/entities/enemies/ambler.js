@@ -58,6 +58,8 @@ class Ambler extends Entity {
         break;
       
       case 'enemy':
+        this.x -= this.speed * Math.cos(this.orientation);
+        this.y -= this.speed * Math.sin(this.orientation);
         this.orientation += Math.PI;
         break;
 

@@ -21,7 +21,11 @@ class MainScene extends GameScene {
   }
 
   run () {
+
     /**
+    if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {
+      this.spawnRandomChaser();
+    }
     if (this.count % ((60/this.fps) * (240/this.spawnRate)) === 0) {
       this.spawnRandomWalker();
     }
@@ -29,9 +33,8 @@ class MainScene extends GameScene {
       this.spawnRandomAmbler();
     }
     **/
-    
     if (this.count === 2) {
-      this.spawnRandomChaser();
+      this.spawnRandomWalker();
     }
     
     this.count++;
