@@ -1,8 +1,10 @@
 import Entity from '../entity';
 import Projectile from '../projectiles/projectile';
 
-let image = new Image();
-image.src = './assets/blob_attack.png';
+let attackImage = new Image();
+attackImage.src = './assets/blob_attack.png';
+let idleImage = new Image();
+idleImage.src = './assets/blob_idle.png';
 
 class Player extends Entity {
   constructor (scene, x = 250, y = 250, orientation = 0) {
@@ -21,6 +23,7 @@ class Player extends Entity {
     
     this.animationCoord = 0;
     this.animationClock = 0;
+    this.animationImage = idleImage;
   }
 
   init () {
@@ -46,23 +49,27 @@ class Player extends Entity {
     ctx.fill();
     **/
 
-    if (this.mouseIsPressed === true) {
-      if (this.animationClock % 2 * this.fps/60 === 0) {
-        this.animationCoord += 80;
-        if (this.animationCoord >= 800) this.animationCoord = 0;
-      }
-      this.animationClock++;
-    } else {
-      this.animationCoord = 0;
-    }
-    
+
     ctx.rotate(Math.PI/2);
-    ctx.drawImage(image,this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
+    ctx.drawImage(this.animationImage,this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
+    this.animationClock++;
+  }
+
+  animate () {
+    if (this.animationClock % 2 * this.fps/60 === 0) {
+      this.animationCoord += 80;
+    }
+    if (this.mouseIsPressed === true) {
+      if (this.animationCoord >= 800) this.animationCoord = 0;
+    } else {
+      if (this.animationCoord >= 640) this.animationCoord = 0;
+    }
   }
 
   act (ctx) {
     this.move();
     this.shoot();
+    this.animate();
   }
 
   move () {
@@ -105,10 +112,14 @@ class Player extends Entity {
 
   handleMouseDown (e) {
     this.mouseIsPressed = true;
+    this.animationClock = 0;
+    this.animationImage = attackImage;
   }
 
   handleMouseUp (e) {
     this.mouseIsPressed = false;
+    this.animationClock = 0;
+    this.animationImage = idleImage;
   }
 
   handleKeyDown (e) {
