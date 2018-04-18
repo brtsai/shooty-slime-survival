@@ -45,8 +45,10 @@ class GameScene {
   }
 
   addEntity (entity) {
-    this.entities[this.getNextId()] = entity;
+    const entityId = this.getNextId();
+    this.entities[entityId] = entity;
     entity.setScene(this);
+    return entityId;
   }
 
   getNextId () {

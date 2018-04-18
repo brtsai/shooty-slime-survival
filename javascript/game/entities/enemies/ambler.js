@@ -52,7 +52,18 @@ class Ambler extends Entity {
   }
 
   receiveCollisionFrom (otherEntity) {
-    console.log('ambler collision');
+    switch (otherEntity.type) {
+      case 'projectile':
+        this.shouldRender = false;
+        break;
+      
+      case 'enemy':
+        this.orientation += Math.PI;
+        break;
+
+      default:
+
+    }
   }
 }
 

@@ -45,7 +45,10 @@ class Projectile extends Entity {
   static get radius () {
     return radius;
   }
-
+  
+  receiveCollisionFrom (otherEntity) {
+    this.shouldRender = false;
+  }
 }
 
 export default Projectile;

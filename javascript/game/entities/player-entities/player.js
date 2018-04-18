@@ -148,6 +148,7 @@ class Player extends Entity {
 
   receiveCollisionFrom (otherEntity) {
     console.log('player collision');
+    this.shouldRender = false;
   }
 }
 
