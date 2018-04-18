@@ -23,7 +23,7 @@ class Player extends Entity {
     
     this.animationCoord = 0;
     this.animationClock = 0;
-    this.animationImage = idleImage;
+    this.animationState = 'idle';
   }
 
   init () {
@@ -50,8 +50,26 @@ class Player extends Entity {
 
   show (ctx) {
     ctx.rotate(Math.PI/2);
-    ctx.drawImage(this.animationImage,this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
+    ctx.drawImage(this.animationImage(),this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
     this.animationClock++;
+  }
+
+  animationImage() {
+    switch (this.animationState) {
+      case 'idle':
+        return idleImage;
+
+      case 'attack':
+        return attackImage;
+
+      default:
+        return idleImage;
+    }
+  }
+
+  setAnimationState(state, frames) {
+    this.animationClock = 0;
+    this.animationState = state;
   }
 
   animate () {
@@ -111,14 +129,12 @@ class Player extends Entity {
 
   handleMouseDown (e) {
     this.mouseIsPressed = true;
-    this.animationClock = 0;
-    this.animationImage = attackImage;
+    this.setAnimationState('attack');
   }
 
   handleMouseUp (e) {
     this.mouseIsPressed = false;
-    this.animationClock = 0;
-    this.animationImage = idleImage;
+    this.setAnimationState('idle');
   }
 
   handleKeyDown (e) {
