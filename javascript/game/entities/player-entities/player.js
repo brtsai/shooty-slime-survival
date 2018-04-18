@@ -29,8 +29,7 @@ class Player extends Entity {
   init () {
   }
 
-  show (ctx) {
-    /**
+  showAbstract (ctx) {
     ctx.beginPath();
     ctx.fillStyle = '#2246f9';
     ctx.arc(0,0,this.radius,0,2*Math.PI);
@@ -47,9 +46,9 @@ class Player extends Entity {
     ctx.fillStyle = 'white';
     ctx.rect(-2, -10, 4, 10);
     ctx.fill();
-    **/
+  }
 
-
+  show (ctx) {
     ctx.rotate(Math.PI/2);
     ctx.drawImage(this.animationImage,this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
     this.animationClock++;

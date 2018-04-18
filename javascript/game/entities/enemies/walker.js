@@ -10,7 +10,7 @@ class Walker extends Ambler {
     this.color = '#1cb235';
     this.outline = 'red';
     
-    this.turnRadius = 2;
+    this.turnRadius = 1.25;
     this.type = 'enemy';
   }
 
