@@ -3,7 +3,7 @@ import BlackBackground from '../entities/backgrounds/black_background';
 import Player from '../entities/player-entities/player';
 import Ambler from '../entities/enemies/ambler';
 import Walker from '../entities/enemies/walker';
-
+import Chaser from '../entities/enemies/chaser';
 
 class MainScene extends GameScene {
   constructor (ctx, fps) {
@@ -21,17 +21,19 @@ class MainScene extends GameScene {
   }
 
   run () {
+    /**
     if (this.count % ((60/this.fps) * (240/this.spawnRate)) === 0) {
       this.spawnRandomWalker();
     }
     if (this.count % ((60/this.fps) * (60/this.spawnRate)) === 0) {
       this.spawnRandomAmbler();
     }
-    /**
-    if (this.count === 2) {
-      this.spawnRandomWalker();
-    }
     **/
+    
+    if (this.count === 2) {
+      this.spawnRandomChaser();
+    }
+    
     this.count++;
   }
 
@@ -81,6 +83,10 @@ class MainScene extends GameScene {
 
   spawnRandomWalker () {
     this.spawnRandomlyPositionedEnemy(Walker);
+  }
+
+  spawnRandomChaser () {
+    this.spawnRandomlyPositionedEnemy(Chaser);
   }
 }
 
