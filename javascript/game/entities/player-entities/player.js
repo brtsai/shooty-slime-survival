@@ -24,6 +24,9 @@ class Player extends Entity {
     this.animationCoord = 0;
     this.animationClock = 0;
     this.animationState = 'idle';
+    this.animationFrameWidth = 80;
+    this.animationLength = 8;
+    this.notInTerminalAnimation = true;
   }
 
   init () {
@@ -67,20 +70,25 @@ class Player extends Entity {
     }
   }
 
-  setAnimationState(state, frames) {
-    this.animationClock = 0;
-    this.animationState = state;
+  setAnimationState(state, frameWidth, animationLength) {
+    if (this.notInTerminalAnimation) {
+      this.animationClock = 0;
+      this.animationFrameWidth = frameWidth;
+      this.animationLength = animationLength;
+      this.animationState = state;
+    }
+  }
+
+  enterTerminalAnimationState(state, frameWidth, animationLength) {
+    this.setAnimationState(state, frameWidth, animationLength);
+    this.notInTerminalAnimation = false;
   }
 
   animate () {
     if (this.animationClock % 2 * this.fps/60 === 0) {
-      this.animationCoord += 80;
+      this.animationCoord += this.animationFrameWidth;
     }
-    if (this.mouseIsPressed === true) {
-      if (this.animationCoord >= 800) this.animationCoord = 0;
-    } else {
-      if (this.animationCoord >= 640) this.animationCoord = 0;
-    }
+    if (this.animationCoord >= this.animationLength * this.animationFrameWidth) this.animationCoord = 0;
   }
 
   act (ctx) {
@@ -129,12 +137,12 @@ class Player extends Entity {
 
   handleMouseDown (e) {
     this.mouseIsPressed = true;
-    this.setAnimationState('attack');
+    this.setAnimationState('attack', 80, 10);
   }
 
   handleMouseUp (e) {
     this.mouseIsPressed = false;
-    this.setAnimationState('idle');
+    this.setAnimationState('idle', 80, 8);
   }
 
   handleKeyDown (e) {
