@@ -1,10 +1,12 @@
 import Entity from '../entity';
 import Projectile from '../projectiles/projectile';
 
-let attackImage = new Image();
+const attackImage = new Image();
 attackImage.src = './assets/blob_attack.png';
-let idleImage = new Image();
+const idleImage = new Image();
 idleImage.src = './assets/blob_idle.png';
+const deathImage = new Image();
+deathImage.src = './assets/blob_death.png';
 
 class Player extends Entity {
   constructor (scene, x = 250, y = 250, orientation = 0) {
@@ -64,6 +66,9 @@ class Player extends Entity {
 
       case 'attack':
         return attackImage;
+      
+      case 'death':
+        return deathImage;
 
       default:
         return idleImage;
@@ -88,12 +93,17 @@ class Player extends Entity {
     if (this.animationClock % 2 * this.fps/60 === 0) {
       this.animationCoord += this.animationFrameWidth;
     }
-    if (this.animationCoord >= this.animationLength * this.animationFrameWidth) this.animationCoord = 0;
+    if (this.animationCoord >= this.animationLength * this.animationFrameWidth) {
+      this.animationCoord = 0;
+      if (!this.notInTerminalAnimation) this.shouldRender = false;
+    }
   }
 
   act (ctx) {
-    this.move();
-    this.shoot();
+    if (this.notInTerminalAnimation) {
+      this.move();
+      this.shoot();
+    }
     this.animate();
   }
 
@@ -125,7 +135,7 @@ class Player extends Entity {
   }
 
   handleMouseMove (e) {
-    this.face(e.layerX, e.layerY)
+    if (this.notInTerminalAnimation) this.face(e.layerX, e.layerY)
   }
 
   face (x, y) {
@@ -203,7 +213,11 @@ class Player extends Entity {
 
   receiveCollisionFrom (otherEntity) {
     console.log('player collision');
-    this.shouldRender = false;
+    const xDiff = otherEntity.x - this.x;
+    const yDiff = otherEntity.y - this.y;
+    const orientationToEntity = Math.atan(yDiff/xDiff) + (xDiff < 0 ? Math.PI : 0);
+    this.orientation = orientationToEntity - Math.PI/2;
+    this.enterTerminalAnimationState('death', 80, 8)
   }
 }
 
