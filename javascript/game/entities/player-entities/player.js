@@ -68,6 +68,7 @@ class Player extends Entity {
         return attackImage;
       
       case 'death':
+        console.log('death image');
         return deathImage;
 
       default:
@@ -77,6 +78,7 @@ class Player extends Entity {
 
   setAnimationState(state, frameWidth, animationLength) {
     if (this.notInTerminalAnimation) {
+      this.animationCoord = 0;
       this.animationClock = 0;
       this.animationFrameWidth = frameWidth;
       this.animationLength = animationLength;
@@ -90,7 +92,7 @@ class Player extends Entity {
   }
 
   animate () {
-    if (this.animationClock % 2 * this.fps/60 === 0) {
+    if (this.animationClock % 3 === 0) {
       this.animationCoord += this.animationFrameWidth;
     }
     if (this.animationCoord >= this.animationLength * this.animationFrameWidth) {
@@ -212,12 +214,13 @@ class Player extends Entity {
   }
 
   receiveCollisionFrom (otherEntity) {
-    console.log('player collision');
-    const xDiff = otherEntity.x - this.x;
-    const yDiff = otherEntity.y - this.y;
-    const orientationToEntity = Math.atan(yDiff/xDiff) + (xDiff < 0 ? Math.PI : 0);
-    this.orientation = orientationToEntity - Math.PI/2;
-    this.enterTerminalAnimationState('death', 80, 8)
+    if (this.notInTerminalAnimation) {
+      const xDiff = otherEntity.x - this.x;
+      const yDiff = otherEntity.y - this.y;
+      const orientationToEntity = Math.atan(yDiff/xDiff) + (xDiff < 0 ? Math.PI : 0);
+      this.orientation = orientationToEntity + Math.PI;
+      this.enterTerminalAnimationState('death', 80, 8)
+    }
   }
 }
 
