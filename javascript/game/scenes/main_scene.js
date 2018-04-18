@@ -21,7 +21,6 @@ class MainScene extends GameScene {
   }
 
   run () {
-
     if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {
       this.spawnRandomChaser();
     }

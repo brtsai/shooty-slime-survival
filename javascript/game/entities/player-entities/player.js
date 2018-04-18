@@ -1,6 +1,9 @@
 import Entity from '../entity';
 import Projectile from '../projectiles/projectile';
 
+let image = new Image();
+image.src = './assets/blob_attack.png';
+
 class Player extends Entity {
   constructor (scene, x = 250, y = 250, orientation = 0) {
     super(scene, x, y, orientation);
@@ -15,12 +18,16 @@ class Player extends Entity {
     this.type = 'player';
     this.firingRate = 1024/this.fps;
     this.firingTick = 0;
+    
+    this.animationCoord = 0;
+    this.animationClock = 0;
   }
 
   init () {
   }
 
   show (ctx) {
+    /**
     ctx.beginPath();
     ctx.fillStyle = '#2246f9';
     ctx.arc(0,0,this.radius,0,2*Math.PI);
@@ -37,6 +44,20 @@ class Player extends Entity {
     ctx.fillStyle = 'white';
     ctx.rect(-2, -10, 4, 10);
     ctx.fill();
+    **/
+
+    if (this.mouseIsPressed === true) {
+      if (this.animationClock % 2 * this.fps/60 === 0) {
+        this.animationCoord += 80;
+        if (this.animationCoord >= 800) this.animationCoord = 0;
+      }
+      this.animationClock++;
+    } else {
+      this.animationCoord = 0;
+    }
+    
+    ctx.rotate(Math.PI/2);
+    ctx.drawImage(image,this.animationCoord, 0, 80, 80, -32, -33, 60, 60);
   }
 
   act (ctx) {

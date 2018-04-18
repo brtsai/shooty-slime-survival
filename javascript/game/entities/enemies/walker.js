@@ -12,7 +12,6 @@ class Walker extends Ambler {
     
     this.turnRadius = 2;
     this.type = 'enemy';
-    console.log(`created walker with x ${x} y ${y} rientation ${orientation}`);
   }
 
   act () {
@@ -28,7 +27,6 @@ class Walker extends Ambler {
   }
 
   steerToPlayer () {
-    console.log('steering walker to player');
     const playerX = this.scene.player.x;
     const playerY = this.scene.player.y;
     const xDiff = playerX - this.x;
@@ -43,10 +41,8 @@ class Walker extends Ambler {
     const orientationDiff = orientationToPlayer - this.orientation;
     
     if (Math.abs(orientationDiff) < this.turnRadius * Math.PI/180) {
-      console.log('orientation diff within turn radius');
       this.orientation = orientationToPlayer;
     } else {
-      console.log(`orientationDiff: ${orientationDiff} orientation: ${this.orientation}`);
       this.orientation += (this.shouldTurnRight(this.scene.player) ? 1 : -1) * this.turnRadius * Math.PI/180;
     }
     
