@@ -69,7 +69,6 @@ class GameEngine {
   handleMouseMove(e) {
     if (this.currentScene.handleMouseMove === undefined) return;
     this.currentScene.handleMouseMove(e);
-    
   }
 
   handleKeyDown(e) {
