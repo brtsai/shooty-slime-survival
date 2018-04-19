@@ -8,23 +8,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
+      font-family: "Comic Sans MS";
+      background: #8b8c79;
+    }
+    
+    .slime {
+      color: #80ff80;
     }
 
     canvas {
+      border: 1px solid #00491a;
     }
     canvas:focus {
       outline: none;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .instructions {
+      color: #b3113b;
+    }
+
+    .instruction-list {
+      color: #1511b3;
+    }
+    
+    .developer {
+      color: #6bdc6b;
     }
 
     .footer-links {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      width: 40%;
+      width: 30%;
       font-size: 24px;
     }
 
@@ -33,17 +53,22 @@
 </head>
 
 <body>
-  <h1>Shooty Sphere Survival</h1>
+  <h1 class="title">Shooty <span class="slime">Slime</span> Survival</h1>
 
   <canvas id="game" width="500" height="500" tabindex="1"></canvas>
   
-  <h2>Instructions</h2>
+  <h2 class="instructions">Instructions</h2>
+  <ul class="instruction-list">
+    <li>
+      Move with WASD
+    </li>
+    <li>
+      Aim and Shoot with the Mouse
+    </li>
+  </ul>
   
-  <p>
-    Move with wasd, aim and shoot with the mouse
-  </p>
-
-  <h2>About the Developer</h2>
+  <br />
+  <h3>About the <span class="developer">Developer</span></h3>
 
   <ul class="footer-links">
     <li><a href="https://github.com/brtsai"><i class="fa fa-github"></i></a></li>

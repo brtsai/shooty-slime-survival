@@ -68,7 +68,6 @@ class Player extends Entity {
         return attackImage;
       
       case 'death':
-        console.log('death image');
         return deathImage;
 
       default:

@@ -6,8 +6,8 @@ import Walker from '../entities/enemies/walker';
 import Chaser from '../entities/enemies/chaser';
 
 class MainScene extends GameScene {
-  constructor (ctx, fps) {
-    super(ctx, fps);
+  constructor (ctx, fps, endScene) {
+    super(ctx, fps, endScene);
     this.count = 1;
     this.spawnRate = 1;
 
@@ -20,23 +20,31 @@ class MainScene extends GameScene {
     this.addEntity(this.player);
   }
 
+  playerIsAlive () {
+    return this.player.shouldRender;
+  }
+
   run () {
-    if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {
-      this.spawnRandomChaser();
+    if (this.playerIsAlive()) {
+      if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {
+        this.spawnRandomChaser();
+      }
+      if (this.count % ((60/this.fps) * (240/this.spawnRate)) === 0) {
+        this.spawnRandomWalker();
+      }
+      if (this.count % ((60/this.fps) * (60/this.spawnRate)) === 0) {
+        this.spawnRandomAmbler();
+      }
+      /**
+      if (this.count === 2) {
+        this.spawnRandomWalker();
+      }
+      **/
+      
+      this.count++;
+    } else {
+      this.endScene();
     }
-    if (this.count % ((60/this.fps) * (240/this.spawnRate)) === 0) {
-      this.spawnRandomWalker();
-    }
-    if (this.count % ((60/this.fps) * (60/this.spawnRate)) === 0) {
-      this.spawnRandomAmbler();
-    }
-    /**
-    if (this.count === 2) {
-      this.spawnRandomWalker();
-    }
-    **/
-    
-    this.count++;
   }
 
   randomInt (max) {

@@ -1,11 +1,12 @@
 class GameScene {
-  constructor (ctx, fps) {
+  constructor (ctx, fps, endScene) {
     this.ctx = ctx;
     this.fps = fps;
     this.bindFunctions();
     this.entities = {};
     this.doodads = {};
     this.nextId = 0;
+    this.endScene = endScene;
 
     this.init()
   }
@@ -27,6 +28,7 @@ class GameScene {
 
   init () {
   }
+  
 
   eachEntity (fn) {
     const entityKeys = Object.keys(this.entities);

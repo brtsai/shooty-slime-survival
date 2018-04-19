@@ -1,20 +1,16 @@
 import MainScene from './scenes/main_scene';
 
 class GameEngine {
-  constructor (canvas = document.getElementById("game"), fps = 30, InitialScene = MainScene) {
+  constructor (canvas = document.getElementById("game"), fps = 30, scenes = [MainScene]) {
+    this.bindFunctions();
+
     // set member variables
     this.ctx = canvas.getContext('2d');
     this.fps = fps;
-    this.currentScene = new InitialScene(this.ctx, this.fps);
-  
-    // bind functions to this
-    this.tick = this.tick.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.scenes = scenes;
+    this.currentScene = new scenes[0](this.ctx, this.fps, this.endCurrentScene);
+    this.sceneIndex = 0;
+    
 
     // setup game tick and mouse/key listeners
     window.setInterval(this.tick, 1000/fps);
@@ -24,6 +20,30 @@ class GameEngine {
     canvas.addEventListener("mousemove", this.handleMouseMove);
     canvas.addEventListener("keydown", this.handleKeyDown);
     canvas.addEventListener("keyup", this.handleKeyUp);
+  }
+
+  bindFunctions () {
+    // bind functions to this
+    this.endCurrentScene = this.endCurrentScene.bind(this);
+    this.tick = this.tick.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+  }
+
+  endCurrentScene () {
+    this.transitionToNextScene();
+  }
+  
+  transitionToNextScene () {
+    this.sceneIndex++;
+    if (this.sceneIndex >= this.scenes.length) {
+      this.sceneIndex = 0;
+    }
+    this.currentScene = new this.scenes[this.sceneIndex] (this.ctx, this.fps, this.endCurrentScene);
   }
 
   tick () {
