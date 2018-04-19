@@ -1,8 +1,8 @@
-# shooty-sphere-survival
+# shooty-slime-survival
 
 ## Overview
 
-Shooty Sphere Survival is a browser based action survival shooter game wherein you play as a shooty sphere trying to survive a harsh world filled with ouchy enemies!
+Shooty Slime Survival is a browser based action survival shooter game wherein you play as a shooty slime trying to survive a harsh world filled with ouchy enemies!
 
 ## Technologies/External Resources
 
@@ -14,9 +14,9 @@ Shooty Sphere Survival is a browser based action survival shooter game wherein y
 ## Project Goals
 
 #### For the game
-* Have users control the shooty sphere using WASD + Mouse to move and shoot
-* The shooty sphere should be able to move around withinthe canvas and shoot
-* There should be enemies that come from off screen to fight the shooty sphere
+* Have users control the shooty slime using WASD + Mouse to move and shoot
+* The shooty slime should be able to move around withinthe canvas and shoot
+* There should be enemies that come from off screen to fight the shooty slime
 * There should be hitbox detection for shooty bullets and ouchy enemies
 * Be fun!!!
 #### For the webpage
@@ -26,14 +26,14 @@ Shooty Sphere Survival is a browser based action survival shooter game wherein y
 
 ## Wireframe
 
-![](https://github.com/brtsai/shooty-sphere-survival/blob/master/documentation/wireframes/shooty-sphere-wireframe.png)
+![](https://github.com/brtsai/shooty-slime-survival/blob/master/documentation/wireframes/shooty-sphere-wireframe.png)
 
 ## Project Schedule
 
 #### Day 1
 * Setup the basic page layout
 * Hit all of the "For the webpage" goals
-* Implement the basic shooty sphere model and controls
+* Implement the basic shooty slime model and controls
 
 #### Day 2
 * Implement shooting
