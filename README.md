@@ -4,6 +4,8 @@
 
 Shooty Slime Survival is a browser based action survival shooter game wherein you play as a shooty slime trying to survive a harsh world filled with ouchy enemies!
 
+![gameplay](https://github.com/brtsai/shooty-slime-survival/blob/master/documentation/assets/usage/game.gif)
+
 ## Technologies/External Resources
 
 * HTML5 Canvas for drawing, rendering the game
