@@ -109,16 +109,16 @@ class Player extends Entity {
   }
 
   move () {
-    if (this.wIsPressed) {
+    if (this.wIsPressed && this.y >= 2 * this.radius + this.moveSpeed) {
       this.y-= this.moveSpeed;
     }
-    if (this.sIsPressed) {
+    if (this.sIsPressed && this.y <= this.scene.ctx.canvas.height - (2 * this.radius + this.moveSpeed)) {
       this.y+= this.moveSpeed;
     }
-    if (this.aIsPressed) {
+    if (this.aIsPressed && this.x >= 2 * this.radius + this.moveSpeed) {
       this.x-= this.moveSpeed;
     }
-    if (this.dIsPressed) {
+    if (this.dIsPressed && this.x <= this.scene.ctx.canvas.width - (2 * this.radius + this.moveSpeed)) {
       this.x+= this.moveSpeed;
     }
   }
@@ -158,49 +158,56 @@ class Player extends Entity {
 
   handleKeyDown (e) {
     switch (e.key) {
+      case "ArrowUp":
       case "W":
       case "w":
         this.wIsPressed = true;
         break;
       
+      case "ArrowLeft":
       case "A":
       case "a":
         this.aIsPressed = true;
         break;
-
+      
+      case "ArrowDown":
       case "S":
       case "s":
         this.sIsPressed = true;
         break;
 
+      case "ArrowRight":
       case "D":
       case "d":
         this.dIsPressed = true;
         break;
 
       default:
-        
         break;
     }
   }
   
   handleKeyUp (e) {
     switch (e.key) {
+      case "ArrowUp":
       case "W":
       case "w":
         this.wIsPressed = false;
         break;
       
+      case "ArrowLeft":
       case "A":
       case "a":
         this.aIsPressed = false;
         break;
 
+      case "ArrowDown":
       case "S":
       case "s":
         this.sIsPressed = false;
         break;
 
+      case "ArrowRight":
       case "D":
       case "d":
         this.dIsPressed = false;

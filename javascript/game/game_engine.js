@@ -75,11 +75,13 @@ class GameEngine {
   handleKeyDown(e) {
     if (this.currentScene.handleKeyDown === undefined) return;
     this.currentScene.handleKeyDown(e);
+    e.preventDefault();
   }
 
   handleKeyUp(e) {
     if (this.currentScene.handleKeyUp === undefined) return;
     this.currentScene.handleKeyUp(e);
+    e.preventDefault();
   }
 
   checkCollisions () {
