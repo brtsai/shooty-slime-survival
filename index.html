@@ -28,10 +28,19 @@
       margin: 0;
     }
     
-    .instructions {
+    .content {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .instructions, .counterweight {
+      margin-right: 20px;
+      width: 200px;
+      
     }
 
     .instruction-list {
+      list-style-type: disc;
     }
       
     .protip {
@@ -56,24 +65,27 @@
 
 <body>
   <h1 class="title">Shooty <span class="slime">Slime</span> Survival</h1>
+  <section class="content">
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <ul class="instruction-list">
+        <li>
+          Move with WASD
+        </li>
+        <li>
+          Aim and Shoot with the Mouse
+        </li>
+        <li>
+          <span class="protip">Protip</span>: You can hold down the mouse button to shoot
+        </li>
+      </ul>
+    </div>
 
-  <h2 class="instructions">Instructions</h2>
-  <ul class="instruction-list">
-    <li>
-      Move with WASD
-    </li>
-    <li>
-      Aim and Shoot with the Mouse
-    </li>
-    <li>
-      <span class="protip">Protip</span>: You can hold down the mouse button to shoot
-    </li>
-  </ul>
+    <canvas id="game" width="500" height="500" tabindex="1"></canvas>
+    
+    <div class="counterweight"></div>
 
-  <br />
-  
-  <canvas id="game" width="500" height="500" tabindex="1"></canvas>
-
+  </section>
   <h3>About the <span class="developer">Developer</span></h3>
 
   <ul class="footer-links">
