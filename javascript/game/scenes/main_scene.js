@@ -4,6 +4,7 @@ import Player from '../entities/player-entities/player';
 import Ambler from '../entities/enemies/ambler';
 import Walker from '../entities/enemies/walker';
 import Chaser from '../entities/enemies/chaser';
+import Cloaker from '../entities/enemies/cloaker';
 
 class MainScene extends GameScene {
   constructor (ctx, fps, endScene) {
@@ -26,6 +27,9 @@ class MainScene extends GameScene {
 
   run () {
     if (this.playerIsAlive()) {
+      if (this.count % ((60/this.fps) * (300/this.spawnRate)) === 0) {
+        this.spawnRandomCloaker();
+      }
       if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {
         this.spawnRandomChaser();
       }
@@ -37,7 +41,7 @@ class MainScene extends GameScene {
       }
       /**
       if (this.count === 2) {
-        this.spawnRandomWalker();
+        this.spawnRandomCloaker();
       }
       **/
       
@@ -97,6 +101,10 @@ class MainScene extends GameScene {
 
   spawnRandomChaser () {
     this.spawnRandomlyPositionedEnemy(Chaser);
+  }
+
+  spawnRandomCloaker () {
+    this.spawnRandomlyPositionedEnemy(Cloaker);
   }
 }
 
