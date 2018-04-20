@@ -1,4 +1,4 @@
-# shooty-slime-survival
+# [shooty-slime-survival](https://brtsai.github.io/shooty-slime-survival/)
 
 ## Overview
 
