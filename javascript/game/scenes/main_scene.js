@@ -27,7 +27,7 @@ class MainScene extends GameScene {
 
   run () {
     if (this.playerIsAlive()) {
-      if (this.count % ((60/this.fps) * (300/this.spawnRate)) === 0) {
+      if (this.count % ((60/this.fps) * (360/this.spawnRate)) === 0) {
         this.spawnRandomCloaker();
       }
       if (this.count % ((60/this.fps) * (120/this.spawnRate)) === 0) {

@@ -11,7 +11,6 @@ class Cloaker extends Walker {
     this.outline = '#FF0000';
     this.opacity = .5;
     this.cloaking = true;
-    console.log('cloaker spawned');
   }
 
   act () {
@@ -30,13 +29,25 @@ class Cloaker extends Walker {
     ctx.stroke();
   }
 
+  isCloseToPlayer () {
+    const xDiff = this.scene.player.x - this.x;
+    const yDiff = this.scene.player.y - this.y;
+    const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    if (distance < 100) return true;
+    return false;
+  }
+
   cloak () {
+    if (this.isCloseToPlayer()) {
+      this.cloaking = false;
+      if (this.opacity < 0) this.opacity = 0;
+    }
     if (this.cloaking) {
       this.opacity -= .01;
-    } else {
+    } else if(this.opacity < 1.1) {
       this.opacity += .01;
     }
-    if (this.opacity < -.25 || this.opacity >= 1) {
+    if (this.opacity < -.35 || this.opacity >= 1.1) {
       this.cloaking = !this.cloaking;
     }
   }
