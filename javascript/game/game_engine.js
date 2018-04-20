@@ -10,7 +10,6 @@ class GameEngine {
     this.scenes = scenes;
     this.currentScene = new scenes[0](this.ctx, this.fps, this.endCurrentScene);
     this.sceneIndex = 0;
-    
 
     // setup game tick and mouse/key listeners
     window.setInterval(this.tick, 1000/fps);
@@ -20,6 +19,7 @@ class GameEngine {
     canvas.addEventListener("mousemove", this.handleMouseMove);
     canvas.addEventListener("keydown", this.handleKeyDown);
     canvas.addEventListener("keyup", this.handleKeyUp);
+
   }
 
   bindFunctions () {
@@ -67,6 +67,17 @@ class GameEngine {
   }
 
   handleMouseMove(e) {
+    let eventClone = e;
+    if( navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ){
+      e = Object.create({}, {
+        layerX: {
+          value: e.layerX - e.target.offsetLeft
+        },
+        layerY: {
+          value: e.layerY - e.target.offsetTop
+        }
+      });
+    }
     if (this.currentScene.handleMouseMove === undefined) return;
     this.currentScene.handleMouseMove(e);
   }
