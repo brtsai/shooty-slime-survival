@@ -10,7 +10,7 @@ class MainMenuScene extends GameScene {
 
   init () {
     this.addEntity(new BlackBackground(this));
-    let playButton = new Button (this, 250, 250, 0, 200, 80, "Play", '#ef3e6c', 48, 'Helvetica', '#1a68b0', '#2f7b2f', '#ded6d8', 5, this.endScene);
+    let playButton = new Button (this, 250, 250, 0, 200, 80, "Play", 'white', 48, 'Helvetica', '#2f7b2f', '#399639', '#ded6d8', 5, this.endScene);
     this.addEntity(playButton);
   }
 
