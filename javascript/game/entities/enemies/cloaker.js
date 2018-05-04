@@ -9,7 +9,7 @@ class Cloaker extends Walker {
     this.radius = radius;
     this.color = 'black';
     this.outline = '#FF0000';
-    this.opacity = .5;
+    this.cloackTick = .5;
     this.cloaking = true;
   }
 
@@ -40,22 +40,22 @@ class Cloaker extends Walker {
   cloak () {
     if (this.isCloseToPlayer()) {
       this.cloaking = false;
-      if (this.opacity < 0) this.opacity = 0;
+      if (this.cloackTick < 0) this.opacity = 0;
     }
     if (this.cloaking) {
-      this.opacity -= .01;
-    } else if(this.opacity < 1.1) {
-      this.opacity += .01;
+      this.cloackTick -= .01;
+    } else if(this.cloackTick < 1.1) {
+      this.cloackTick += .01;
     }
-    if (this.opacity < -.35 || this.opacity >= 1.1) {
+    if (this.cloackTick < -.35 || this.opacity >= 1.1) {
       this.cloaking = !this.cloaking;
     }
   }
 
   alphaValue () {
-    if (this.opacity < .05) return .05;
-    if (this.opacity > .5) return .5;
-    return this.opacity;
+    if (this.cloackTick < .05) return .05;
+    if (this.cloackTick > .5) return .5;
+    return this.cloackTick;
   }
 
 }
