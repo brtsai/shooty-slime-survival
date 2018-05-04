@@ -21,10 +21,32 @@ Shooty Slime Survival is a browser based action survival shooter game wherein yo
 * There should be enemies that come from off screen to fight the shooty slime
 * There should be hitbox detection for shooty bullets and ouchy enemies
 * Be fun!!!
+
 #### For the webpage
 * Have a canvas element which renders the game view
 * Have the game title as well as instructions
 * Have an "About the Developer" section as a footer
+
+## Fun Facts
+
+Did you know that walkers (big green blobs) actually "steer" towards the player?
+That's right! They have a turn radius, and turn either left or right if they aren't already facing you.
+How do they know whether to turn left or right?
+It takes its current orientation vector, and dots that with a vector perpendicular to the direction the
+player's in.
+If the resulting dot product is greater than 0, that means that the vector to the player has some
+component in the clockwise direction of the walker's orientation, and it should turn right!
+
+```javascript
+shouldTurnRight (player) {
+  const xDiff = player.x - this.x;
+  const yDiff = player.y - this.y;
+
+  const perpendicularDot = Math.cos(this.orientation) * yDiff - Math.sin(this.orientation) * xDiff;
+
+  return perpendicularDot > 0;
+}
+```
 
 ## Project Schedule
 
