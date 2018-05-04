@@ -33,8 +33,7 @@ Did you know that walkers (big green blobs) actually "steer" towards the player?
 That's right! They have a turn radius, and turn either left or right if they aren't already facing you.\
 How do they know whether to turn left or right?\
 It takes its current orientation vector, and dots that with a vector perpendicular to the direction the player's in.\
-If the resulting dot product is greater than 0, that means that the vector to the player has some
-component in the clockwise direction of the walker's orientation, and it should turn right!
+If the resulting dot product is greater than 0, that means that the vector to the player has some component in the clockwise direction of the walker's orientation, and it should turn right!
 
 ```javascript
 shouldTurnRight (player) {
