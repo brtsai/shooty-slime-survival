@@ -30,7 +30,7 @@ Shooty Slime Survival is a browser based action survival shooter game wherein yo
 ## Fun Facts
 
 Did you know that walkers (big green blobs) actually "steer" towards the player?\
-That's right! They have a turn radius, and turn either left or right if they aren't already facing you.
+That's right! They have a turn radius, and turn either left or right if they aren't already facing you.\
 How do they know whether to turn left or right?
 It takes its current orientation vector, and dots that with a vector perpendicular to the direction the
 player's in.
