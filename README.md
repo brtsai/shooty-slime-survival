@@ -26,10 +26,6 @@ Shooty Slime Survival is a browser based action survival shooter game wherein yo
 * Have the game title as well as instructions
 * Have an "About the Developer" section as a footer
 
-## Wireframe
-
-![](https://github.com/brtsai/shooty-slime-survival/blob/master/documentation/wireframes/shooty-sphere-wireframe.png)
-
 ## Project Schedule
 
 #### Day 1
